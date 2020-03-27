@@ -1,0 +1,16 @@
+{
+  "manifest_version": 2,
+  "short_name": "COVID Tab",
+  "name": "COVID-19 Tab",
+  "author": "Krona Emmanuel",
+  "version": "0.0.1",
+  "description": "Replace new tab screen with COVID Data Dashboard.",
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  },
+  "permissions": ["storage"],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
