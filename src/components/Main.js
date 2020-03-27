@@ -1,5 +1,7 @@
 import React from 'react'
 
+import Chart from './Chart'
+
 export default class Main extends React.Component {
   constructor() {
     super()
@@ -28,7 +30,6 @@ export default class Main extends React.Component {
           recovered: data.recovered,
           data
         })
-        console.log(data)
       })
       .catch(error => console.log('Error fetching data: ', error));
   }
@@ -36,7 +37,11 @@ export default class Main extends React.Component {
   render() {
     return(
       <div>
+        <h1>Cases: {this.state.cases}</h1>
         <h1>Recovered: {this.state.recovered}</h1>
+        <h1>Deaths: {this.state.deaths}</h1>
+        
+        <Chart country="China"/>
       </div>
     )
   }
