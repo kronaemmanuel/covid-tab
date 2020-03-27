@@ -1,0 +1,60 @@
+@import "./static/reset.css";
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;700;800&display=swap');
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 0.4fr 0.6fr;
+  grid-auto-rows: minmax(30px, auto);
+  height: 100vh;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.area{
+border: 2px solid rgb(233,171,88);
+    background-color: rgba(233,171,88,.5);
+    color: #d9480f; 
+}
+
+.title {
+  grid-column: 1;
+  grid-row: 1 / 4;
+  background-color: #41294b;
+  color: #fff;
+  padding: 1rem;
+  height: fit-content;
+}
+
+.title h1{
+ font-weight: 800;
+ font-size: 4rem;
+}
+
+.title h3 {
+  font-weight: 200;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+}
+
+.contagions { 
+  grid-column: 1;
+  grid-row: 4 / 10;
+  background-color: #f8b66c;
+  display: flex;
+}
+.symptoms {
+  grid-column: 1;
+  grid-row: 10 / 11;
+}
+.symptoms-img {
+  grid-column: 1;
+  grid-row: 11 / 22;
+}
+.chart {
+  grid-column: 2;
+  grid-row: 1 / 15;
+}
+.prevent {
+  grid-column: 2;
+  grid-row: 15 / 22;
+}
