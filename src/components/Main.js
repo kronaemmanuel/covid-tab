@@ -35,11 +35,9 @@ export default class Main extends React.Component {
 
   render() {
     return(
-      <React.Fragment>
-        <h1>Total Cases: {this.state.cases}</h1> 
-        <h1>Total Deaths: {this.state.deaths}</h1>
-        <h1>Total Recovered: {this.state.recovered}</h1>
-      </React.Fragment>
+      <div>
+        <h1>Recovered: {this.state.recovered}</h1>
+      </div>
     )
   }
 }

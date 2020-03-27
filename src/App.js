@@ -5,10 +5,10 @@ import Main from './components/Main'
 
 function App() {
   return(
-    <React.Fragment>
+    <div>
       <Header />
       <Main />
-    </React.Fragment>
+    </div>
   )
 }
 
