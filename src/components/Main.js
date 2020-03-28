@@ -1,11 +1,16 @@
 import React from 'react'
 
 import Chart from './Chart'
+import CountrySelector from './CountrySelector'
+import Overview from './Overview'
+import './Main.css'
 
 export default class Main extends React.Component {
   constructor() {
     super()
+    this.handleCountryChange = this.handleCountryChange.bind(this)
     this.state = {
+      country: 'all',
       cases: 0,
       deaths: 0,
       recovered: 0,
@@ -13,35 +18,20 @@ export default class Main extends React.Component {
     }
   }
 
-  componentDidMount() {
-    const requestOptions = {
-      method: 'GET',
-      redirect: 'follow'
-    };
-
-    fetch('https://corona.lmao.ninja/all', requestOptions)
-      .then(results => {
-        return results.json()
-      })
-      .then(data => {
-        this.setState({
-          cases: data.cases,
-          deaths: data.deaths,
-          recovered: data.recovered,
-          data
-        })
-      })
-      .catch(error => console.log('Error fetching data: ', error));
+  handleCountryChange(country) {
+    this.setState({country})
   }
 
   render() {
+    const { country } = this.state;
     return(
       <div>
-        <h1>Cases: {this.state.cases}</h1>
-        <h1>Recovered: {this.state.recovered}</h1>
-        <h1>Deaths: {this.state.deaths}</h1>
-        
-        <Chart country="China"/>
+        <CountrySelector value={ country } handleCountryChange={this.handleCountryChange}/> 
+        <Overview country={this.state.country} />
+        <div className="chartsContainer">
+          <Chart country={this.state.country} legend='deaths'/>
+          <Chart country={this.state.country} legend='cases'/>
+        </div>
       </div>
     )
   }

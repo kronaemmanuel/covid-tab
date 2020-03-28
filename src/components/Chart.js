@@ -4,26 +4,31 @@ import { ResponsiveLine } from '@nivo/line'
 export default class Chart extends React.Component {
   constructor(props) {
     super(props)
+    this.fetchDataFor = this.fetchDataFor.bind(this)
     this.state = {
-      country: this.props.country,
       data: []
     }
   }
 
-  componentDidMount() {
+  componentDidUpdate(prevProps) {
+    if(this.props.country !== prevProps.country) {
+      this.fetchDataFor(this.props.country, this.props.legend)
+    }
+  }
+
+  fetchDataFor(country, legend) {
     var requestOptions = {
       method: 'GET',
       redirect: 'follow'
     };
 
-    fetch(`https://corona.lmao.ninja/v2/historical/${this.props.country}`, requestOptions)
+    fetch(`https://corona.lmao.ninja/v2/historical/${country}`, requestOptions)
       .then(response => response.json())
       .then(result => {
-        const cases = result.timeline.cases
         let fdata = []
-        fdata.push({ id: 'cases', data: [] })
+        fdata.push({ id: `${legend}`, data: [] })
 
-        for (let [date, num] of Object.entries(cases)) {
+        for (let [date, num] of Object.entries(result.timeline[`${legend}`])) {
           fdata[0].data.push({ x: date, y: num })
         }
         
@@ -34,9 +39,9 @@ export default class Chart extends React.Component {
 
   render() {
     return(
-      <div style={{height: '300px', width: '100%'}}>
+      <div style={{height: '300px', width: '50%'}}>
         <ResponsiveLine data={this.state.data}
-          margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
+          margin={{ top: 50, right: 50, bottom: 50, left: 50 }}
           xScale={{
             type: 'time',
             format: '%m/%d/%Y',
@@ -46,7 +51,7 @@ export default class Chart extends React.Component {
             axisBottom={{
             orient: 'bottom',
             tickPadding: 5,
-            tickRotation: 0,
+            tickRotation: 90,
             legend: 'Date',
             legendOffset: 36,
             legendPosition: 'middle',
@@ -57,9 +62,9 @@ export default class Chart extends React.Component {
             tickSize: 5,
             tickPadding: 5,
             tickRotation: 0,
-            legend: 'count',
-            legendOffset: -40,
-            legendPosition: 'middle'
+                   legend: `${this.props.legend}`,
+            legendOffset: 0,
+            legendPosition: 'top'
         }}
           color={{ scheme: 'nivo' }}
           pointSize={10}
@@ -69,32 +74,6 @@ export default class Chart extends React.Component {
         pointLabel="y"
         pointLabelYOffset={-12}
         useMesh={true}
-        legends={[
-            {
-                anchor: 'bottom-right',
-                direction: 'column',
-                justify: false,
-                translateX: 100,
-                translateY: 0,
-                itemsSpacing: 0,
-                itemDirection: 'left-to-right',
-                itemWidth: 80,
-                itemHeight: 20,
-                itemOpacity: 0.75,
-                symbolSize: 12,
-                symbolShape: 'circle',
-                symbolBorderColor: 'rgba(0, 0, 0, .5)',
-                effects: [
-                    {
-                        on: 'hover',
-                        style: {
-                            itemBackground: 'rgba(0, 0, 0, .03)',
-                            itemOpacity: 1
-                        }
-                    }
-                ]
-            }
-        ]}
         />
       </div>
     )

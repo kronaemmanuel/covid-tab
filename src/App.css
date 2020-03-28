@@ -2,18 +2,16 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;700;800&display=swap');
 
+* {
+  box-sizing: border-box;
+}
+
 .wrapper {
   display: grid;
   grid-template-columns: 0.4fr 0.6fr;
   grid-auto-rows: minmax(30px, auto);
   height: 100vh;
   font-family: 'Montserrat', sans-serif;
-}
-
-.area{
-border: 2px solid rgb(233,171,88);
-    background-color: rgba(233,171,88,.5);
-    color: #d9480f; 
 }
 
 .title {
@@ -39,22 +37,112 @@ border: 2px solid rgb(233,171,88);
 .contagions { 
   grid-column: 1;
   grid-row: 4 / 10;
-  background-color: #f8b66c;
-  display: flex;
+  /*background-color: #f8b66c;*/
+  background-color: #ebebed;
 }
+
+.contagions .box {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.contagions h3 {
+  font-weight: 700;
+  text-transform: uppercase;
+  display: inline-block;
+  margin: 0 auto;
+  text-align: center;
+  background-color: #f8b66c;
+  padding: 10px 30px;
+}
+
+.contagions .gallery {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 20px 0;
+  align-items: baseline;
+}
+
+.contagions .gallery img {
+  align-self: center;
+}
+
+.contagions .gallery p {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.contagions .gallery div {
+  width: 33%;
+  text-align: center;
+}
+
 .symptoms {
   grid-column: 1;
   grid-row: 10 / 11;
+  background-color: #41294b;
+  color: #fff;
+  padding: 10px;
 }
+
+.symptoms h3 {
+  font-weight: 700;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+}
+
 .symptoms-img {
   grid-column: 1;
   grid-row: 11 / 22;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
+
+.symptoms-img img{
+  height: 100%;
+}
+
 .chart {
   grid-column: 2;
   grid-row: 1 / 15;
 }
+
 .prevent {
   grid-column: 2;
   grid-row: 15 / 22;
+  background-color: #feebc3;
+}
+
+.prevent .gallery {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 20px 0;
+  align-items: baseline;
+}
+
+.prevent .gallery div {
+  text-align: center;
+}
+
+.prevent h3 {
+  font-weight: 700;
+  font-size: 1.2rem;
+  text-align: center;
+  color: #fff;
+  background-color: #41294b;
+  padding: 10px 0;
+}
+
+.prevent .gallery p {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.prevent .gallery img {
+  height: 100%;
 }
