@@ -1,4 +1,14 @@
+.main{
+  padding: 3% 3% 0 0;
+}
+
 .chartsContainer{
   width: 100%;
   display: flex;
+}
+
+.errorMessage {
+  font-size: 0.5em;
+  color: #ff304f;
+  text-align: center;
 }

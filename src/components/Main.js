@@ -14,7 +14,7 @@ export default class Main extends React.Component {
       cases: 0,
       deaths: 0,
       recovered: 0,
-      data: {}
+      data: {},
     }
   }
 
@@ -24,13 +24,15 @@ export default class Main extends React.Component {
 
   render() {
     const { country } = this.state;
+    const errorMessage = country === 'all' ? "No Historical Data Available" : ""
     return(
-      <div>
+      <div className="main">
         <CountrySelector value={ country } handleCountryChange={this.handleCountryChange}/> 
-        <Overview country={this.state.country} />
+        <Overview country={country} />
+        <p className="errorMessage">{errorMessage}</p>
         <div className="chartsContainer">
-          <Chart country={this.state.country} legend='deaths'/>
-          <Chart country={this.state.country} legend='cases'/>
+          <Chart country={country} legend='deaths'/>
+          <Chart country={country} legend='cases'/>
         </div>
       </div>
     )

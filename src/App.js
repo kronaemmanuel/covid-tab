@@ -1,7 +1,7 @@
 import React from 'react'
+import GithubCorner from 'react-github-corner';
 
 import Main from './components/Main'
-
 import './App.css'
 import air_transmission from './static/images/air_transmission.png'
 import human_contact from './static/images/human_contact.png'
@@ -15,6 +15,7 @@ import avoid_animals from './static/images/avoid_animals.png'
 function App() {
   return (
     <div className="container">
+      <GithubCorner href="https://github.com/username/repo" bannerColor="#581b98"/>
       <div className="title area">
         <h1>2019-nCoV</h1>
         <h2>Wuhan Coronavirus</h2>

@@ -10,6 +10,7 @@
     "postcss-normalize": "^8.0.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-github-corner": "^2.3.0",
     "react-scripts": "3.4.1"
   },
   "scripts": {

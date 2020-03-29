@@ -20,7 +20,6 @@ html {
 
 .container {
   font-family: 'Rubik', sans-serif;
-  max-width: 1440px;
   display: grid;
   grid-template-columns: minmax(300px, 0.4fr) minmax(500px, 0.6fr);
   grid-template-rows: min-content max-content;
@@ -95,6 +94,7 @@ html {
 
 .gallery img {
   align-self: center;
+  height: 50%;
 }
 
 .galleryItem {
@@ -132,7 +132,7 @@ html {
 }
 
 .prevention h4 {
-  background-color: #581b98;
+  background-color: #ffb174;
   color: #fff;
   padding: 1%;
   font-size: 0.8em;
