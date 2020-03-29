@@ -13,56 +13,36 @@ import nose_rag from './static/images/nose_rag.png'
 
 function App() {
   return (
-    <div className="wrapper">
-      <div className="title">
+    <div className="container">
+      <div className="title area">
         <h1>2019-nCoV</h1>
-        <h3>Wuhan Coronavirus</h3>
+        <h2>Wuhan Coronavirus</h2>
       </div>
-      <div className="contagions">
-        <div className="box">
-          <h3>Contagions</h3>
+      <div className="charts area">Charts</div>
+      <div className="contagion area">
+        <div className="heading">
+          <h4>Contagion</h4>
         </div>
         <div className="gallery">
-          <div>
-            <img src={air_transmission} alt="Air Transmission by Cough or Sneeze" />
-            <p>Air Transmission by Cough or Sneeze</p>
+          <div className="galleryItem">
+            <img src={air_transmission} />
+            <p>Air Transmission</p>
           </div>
-          <div>
-            <img src={human_contact} alt="Human Contacts" />
-            <p>Human Contacts</p>
+          <div className="galleryItem">
+            <img src={human_contact} />
+            <p>Human Contact</p>
           </div>
-          <div>
-            <img src={contaminated_objects} alt="Contaminated Object" />
-            <p>Contaminated Object</p>
-          </div>
-        </div>
-      </div>
-      <div className="symptoms">
-        <h3>Symptoms</h3>
-      </div>
-      <div className="symptoms-img">
-        <img src={symptoms} alt="Symptoms" />
-      </div>
-      <div className="chart area">
-        <Main />
-      </div>
-      <div className="prevent">
-        <h3>What can I do?</h3>
-        <div className="gallery">
-          <div>
-            <img src={wear_mask} alt="Wear Mask" />
-            <p>Wear Masks</p>
-          </div>
-          <div>
-            <img src={wash_hands} alt="Wash your Hand" />
-            <p>Wash your Hands</p>
-          </div>
-          <div>
-            <img src={nose_rag} alt="Use Nose Rag" />
-            <p>Use Nose Rag</p>
+          <div className="galleryItem">
+            <img src={contaminated_objects} />
+            <p>Contaminated Objects</p>
           </div>
         </div>
       </div>
+      <div className="symptoms area">
+          <h4>Symptoms</h4>
+          <img src={symptoms}/>
+      </div>
+      <div className="prevention area">Prevention</div>
     </div>
   )
 }

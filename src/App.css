@@ -1,148 +1,145 @@
-@import "./static/reset.css";
+/*.area{
+  font-family: sans-serif;
+  font-weight: 700;
+  background-color: #ffa45c;
+  opacity: 0.5;
+  border: 2px dashed #5d5d5a;
+  padding: 20px;
+  border-radius: 5px;
+}*/
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;700;800&display=swap');
-
-* {
-  box-sizing: border-box;
+*{
+  margin: 0;
+  padding: 0;
+  border: 1px solid red;
 }
 
-.wrapper {
+html {
+  font-size: calc(1em + 1vw)
+}
+
+.container {
+  font-family: 'Rubik', sans-serif;
+  max-width: 1440px;
   display: grid;
-  grid-template-columns: 0.4fr 0.6fr;
-  grid-auto-rows: minmax(30px, auto);
+  grid-template-columns: minmax(300px, 0.4fr) minmax(500px, 0.6fr);
+  grid-auto-rows: min-content;
+  grid-template-areas:
+    "title         chart"
+    "contagion    chart"
+    "symptoms      chart"
+    "symptoms prevention";
   height: 100vh;
-  font-family: 'Montserrat', sans-serif;
 }
 
 .title {
-  grid-column: 1;
-  grid-row: 1 / 4;
-  background-color: #41294b;
+  grid-area: title;
+  background-color: #581b98;
   color: #fff;
-  padding: 1rem;
+  padding: 3%;
   height: fit-content;
 }
 
 .title h1{
- font-weight: 800;
- font-size: 4rem;
+  font-size: 1.5em;
+  font-weight: 700;
 }
 
-.title h3 {
-  font-weight: 200;
-  font-size: 1.5rem;
+.title h2{
+  font-size: 1em;
+  font-weight: 300;
   text-transform: uppercase;
 }
 
-.contagions { 
-  grid-column: 1;
-  grid-row: 4 / 10;
-  /*background-color: #f8b66c;*/
-  background-color: #ebebed;
+.charts {
+  grid-area: chart;
+  background-color: #ffb174;
+  height: fit-content;
 }
 
-.contagions .box {
+.contagion {
+  grid-area: contagion;
+  background-color: #dee1ec;
+  height: fit-content;
+  padding-bottom: 5%;
+}
+
+.contagion .heading {
   display: flex;
-  width: 100%;
   justify-content: center;
 }
 
-.contagions h3 {
-  font-weight: 700;
+.contagion h4 {
+  font-size: 0.8em;
   text-transform: uppercase;
+  background-color: #ffb174;
+  padding: 1%;
+  color: #fff;
   display: inline-block;
-  margin: 0 auto;
   text-align: center;
-  background-color: #f8b66c;
-  padding: 10px 30px;
 }
 
-.contagions .gallery {
+.gallery {
   display: flex;
+  justify-content: space-evenly;
   flex-direction: row;
-  justify-content: space-around;
-  margin: 20px 0;
   align-items: baseline;
 }
 
-.contagions .gallery img {
+.gallery p {
+  font-size: 0.5em;
+  text-transform: uppercase;
+  color: #574b90;
+  font-weight: 500;
+}
+
+.gallery img {
   align-self: center;
 }
 
-.contagions .gallery p {
-  font-size: 14px;
-  font-weight: 700;
-}
+.galleryItem {
+  display: flex;
+  flex-direction: column;
 
-.contagions .gallery div {
-  width: 33%;
-  text-align: center;
 }
 
 .symptoms {
-  grid-column: 1;
-  grid-row: 10 / 11;
-  background-color: #41294b;
-  color: #fff;
-  padding: 10px;
-}
-
-.symptoms h3 {
-  font-weight: 700;
-  font-size: 1.2rem;
-  text-transform: uppercase;
-}
-
-.symptoms-img {
-  grid-column: 1;
-  grid-row: 11 / 22;
-  background-color: #fff;
+  grid-area: symptoms;
   display: flex;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
 }
 
-.symptoms-img img{
-  height: 100%;
-}
-
-.chart {
-  grid-column: 2;
-  grid-row: 1 / 15;
-}
-
-.prevent {
-  grid-column: 2;
-  grid-row: 15 / 22;
-  background-color: #feebc3;
-}
-
-.prevent .gallery {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  margin: 20px 0;
-  align-items: baseline;
-}
-
-.prevent .gallery div {
-  text-align: center;
-}
-
-.prevent h3 {
-  font-weight: 700;
-  font-size: 1.2rem;
-  text-align: center;
+.symptoms h4{
+  background-color: #581b98;
   color: #fff;
-  background-color: #41294b;
-  padding: 10px 0;
+  padding: 1% 1% 1% 3%;
+  font-size: 0.8em;
+  text-transform: uppercase;
+  box-sizing: border-box;
+  width: 100%;
 }
 
-.prevent .gallery p {
-  font-weight: 700;
-  font-size: 14px;
-}
-
-.prevent .gallery img {
+.symptoms img{
   height: 100%;
+  align-self: center;
+}
+
+.prevention {
+  grid-area: prevention;
+}
+
+@media(max-width: 800px){
+  .container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: minmax(1fr, auto);
+  grid-template-areas:
+    "title"
+    "chart"
+    "contagion"
+    "symptoms"
+    "prevention";
+  height: 100vh;
+}
 }
