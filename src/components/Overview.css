@@ -1,0 +1,27 @@
+.overview {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.overview p{
+  font-size: 0.8em;
+  font-weight: 300;
+  color: #40514e;
+}
+
+.overview p span{
+  font-weight: 500;
+  font-size: 1.5em;
+}
+
+.cases span{
+  color: #581b98;
+}
+
+.deaths span {
+  color: #ff304f;
+}
+
+.recovered span {
+  color: #17b978;
+}

@@ -1,5 +1,7 @@
 import React from 'react'
 
+import './Overview.css'
+
 export default class Overview extends React.Component {
   constructor(props) {
     super(props)
@@ -46,10 +48,10 @@ export default class Overview extends React.Component {
 
   render() {
     return(
-      <div>
-        <p>Cases: {this.state.cases}</p>
-        <p>Deaths: {this.state.deaths}</p>
-        <p>Recovered: {this.state.recovered}</p>
+      <div className="overview">
+        <p className="cases">Cases: <span>{this.state.cases}</span></p>
+        <p className="deaths">Deaths: <span>{this.state.deaths}</span></p>
+        <p className="recovered">Recovered: <span>{this.state.recovered}</span></p>
       </div>
     )
   }

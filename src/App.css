@@ -11,11 +11,11 @@
 *{
   margin: 0;
   padding: 0;
-  border: 1px solid red;
+  box-sizing: border-box;
 }
 
 html {
-  font-size: calc(1em + 1vw)
+  font-size: calc(1em + 1vw);
 }
 
 .container {
@@ -23,7 +23,8 @@ html {
   max-width: 1440px;
   display: grid;
   grid-template-columns: minmax(300px, 0.4fr) minmax(500px, 0.6fr);
-  grid-auto-rows: min-content;
+  grid-template-rows: min-content max-content;
+  /* grid-auto-rows: 1fr; */
   grid-template-areas:
     "title         chart"
     "contagion    chart"
@@ -37,7 +38,6 @@ html {
   background-color: #581b98;
   color: #fff;
   padding: 3%;
-  height: fit-content;
 }
 
 .title h1{
@@ -53,8 +53,7 @@ html {
 
 .charts {
   grid-area: chart;
-  background-color: #ffb174;
-  height: fit-content;
+  padding: 1%;
 }
 
 .contagion {
@@ -84,6 +83,7 @@ html {
   justify-content: space-evenly;
   flex-direction: row;
   align-items: baseline;
+  padding: 2%;
 }
 
 .gallery p {
@@ -127,6 +127,19 @@ html {
 
 .prevention {
   grid-area: prevention;
+  background-color: #fff4e3;
+
+}
+
+.prevention h4 {
+  background-color: #581b98;
+  color: #fff;
+  padding: 1%;
+  font-size: 0.8em;
+  text-transform: uppercase;
+  box-sizing: border-box;
+  width: 100%;
+  text-align: center;
 }
 
 @media(max-width: 800px){

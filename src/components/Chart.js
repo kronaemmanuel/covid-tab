@@ -39,9 +39,9 @@ export default class Chart extends React.Component {
 
   render() {
     return(
-      <div style={{height: '300px', width: '50%'}}>
+      <div style={{height: '300px', width: '50%', fontSize: '0.5em'}}>
         <ResponsiveLine data={this.state.data}
-          margin={{ top: 50, right: 50, bottom: 50, left: 50 }}
+          margin={{ top: 50, right: 100, bottom: 50, left: 50 }}
           xScale={{
             type: 'time',
             format: '%m/%d/%Y',
@@ -51,10 +51,10 @@ export default class Chart extends React.Component {
             axisBottom={{
             orient: 'bottom',
             tickPadding: 5,
-            tickRotation: 90,
+            tickRotation: -90,
             legend: 'Date',
-            legendOffset: 36,
-            legendPosition: 'middle',
+            legendOffset: 0,
+            legendPosition: 'end',
               format: '%b %d'
         }}      
                  axisLeft={{
@@ -66,7 +66,7 @@ export default class Chart extends React.Component {
             legendOffset: 0,
             legendPosition: 'top'
         }}
-          color={{ scheme: 'nivo' }}
+          colors='#ffb174'
           pointSize={10}
         pointColor={{ theme: 'background' }}
         pointBorderWidth={2}
