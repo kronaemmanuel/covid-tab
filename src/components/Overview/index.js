@@ -20,30 +20,11 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Overview(props) {
   const classes = useStyles()
-  
-  const [cases, setCases] = React.useState(0)
-  const [deaths, setDeaths] = React.useState(0)
-  const [recovered, setRecovered] = React.useState(0)
-  
-  const fetchDataFor = country => {
-    const requestOptions = {
-      method: 'GET',
-      redirect: 'follow',
-    }
-    const fetchAddress = (country === 'all') ? `https://corona.lmao.ninja/all` : `https://corona.lmao.ninja/countries/${country}`
-    fetch(fetchAddress, requestOptions)
-      .then(results => results.json())
-      .then(data => {
-        setCases(data.cases)
-        setDeaths(data.deaths)
-        setRecovered(data.recovered)
-      })
-      .catch(error => console.log('Error fetching data: ', error))
-  }
-
-  React.useEffect(() => {
-    fetchDataFor(props.country)
-  }, [props.country])
+  const {
+    cases,
+    recovered,
+    deaths,
+  } = props.data  
 
   return(
     <React.Fragment>
