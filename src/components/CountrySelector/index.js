@@ -8,13 +8,13 @@ export default function CountrySelector(props) {
     props.handleCountryChange(e.target.value)
   }
 
-  const menuItemsList = props.countries.map(country =>
-    <MenuItem value={country.value}>{country.countryName}</MenuItem>
+  const menuItemsList = props.countries.map(item => 
+      <MenuItem value={item.iso3} key={item.iso3}>{item.country}</MenuItem>
   )
 
   return(
     <React.Fragment>
-      <InputLabel id='country'>Show result for</InputLabel>
+      <InputLabel id='country'>Show results for</InputLabel>
       <Select
         labelId='country'
         value={props.value}

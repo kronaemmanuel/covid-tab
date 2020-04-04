@@ -29,35 +29,32 @@ export default function Main() {
   const classes = useStyles()
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight)
 
-  const [countryList, setCountryList] = React.useState([])
   const [country, setCountry] = React.useState('all')
   const handleCountryChange = country => {
     setCountry(country) 
   }
 
-
+  const [countryList, setCountryList] = React.useState([])
   React.useEffect(() => {
     const fetchCountriesList = async () => {
-      await
-        fetch('https://corona.lmao.ninja/countries?sort=country')
-        .then(async response => response.json())
-        .then(data => {
-          let list = []
+      const response = await fetch('https://corona.lmao.ninja/countries?sort=country')
+      const data = await response.json()
+      let list = []
+      data.forEach(item => {
+        if(item.countryInfo.iso3 != null){
           list.push({
-            iso3: 'all',
-            country: 'World'
-          })
-          data.forEach(item => {
-            list.push({
-              iso3: item.countryInfo.iso3,
-              country: country
-            })  
-          })
-          console.log(list)
-          setCountryList(list)
-        })
-        .catch(err => console.log('Error while fetching data', err))
+            iso3: item.countryInfo.iso3,
+            country: item.country
+          })  
+        }
+      })
+      list.reverse().unshift({
+        iso3: 'all',
+        country: 'World'
+      })
+      setCountryList(list)
     }
+
     fetchCountriesList()
   }, [])
 
