@@ -110,8 +110,8 @@ export default function App() {
           <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
             COVID Tab
           </Typography>
-          <IconButton color="inherit">
-            <GitHubIcon />
+          <IconButton href="https://github.com/kronaemmanuel/covid-tab" color="inherit">
+            <GitHubIcon/>
           </IconButton>
         </Toolbar>
       </AppBar>
