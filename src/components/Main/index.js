@@ -10,6 +10,8 @@ import RegionSelector from '../RegionSelector'
 import Chart from '../Chart'
 import Overview from '../Overview'
 
+var _ = require('lodash/core')
+
 const useStyles = makeStyles((theme) => ({
   container: {
     paddingTop: theme.spacing(4),
@@ -30,9 +32,14 @@ export default function Main() {
   const classes = useStyles()
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight)
 
+  const [legend, setLegend] = React.useState('deaths')
+  const handleLegendChange = legend => {
+    setLegend(legend)
+  }
+  
   const [region, setRegion] = React.useState('all')
   const handleRegionChange = region => {
-    setRegion(region) 
+    setRegion(region)
   }
 
   const [countryData, setCountryData] = React.useState([])
@@ -42,7 +49,7 @@ export default function Main() {
       const data = await response.json()
       let list = []
       data.forEach(item => {
-        if(item.countryInfo.iso3 != null){
+        if (item.countryInfo.iso3 != null) {
           list.push({
             iso3: item.countryInfo.iso3,
             country: item.country,
@@ -50,7 +57,7 @@ export default function Main() {
             deaths: item.deaths,
             recovered: item.recovered,
             updated: item.updated
-          })  
+          })
         }
       })
       setCountryData(list.reverse())
@@ -76,7 +83,7 @@ export default function Main() {
 
     fetchWorldData()
   }, [])
-  
+
   const [regionList, setRegionList] = React.useState([])
   React.useEffect(() => {
     const createRegionList = () => {
@@ -100,7 +107,7 @@ export default function Main() {
 
   const [overviewData, setOverviewData] = React.useState({})
   React.useEffect(() => {
-    if(region === 'all'){
+    if (region === 'all') {
       const lastUpdated = new Date(worldData.updated).toDateString()
       setOverviewData({
         cases: worldData.cases,
@@ -119,17 +126,64 @@ export default function Main() {
       })
     }
   }, [region, worldData, countryData])
+
+  const [historicalData, setHistoricalData] = React.useState({})
+
+  React.useEffect(() => {
+    const fetchHistoricalData = async () => {
+      const response = await fetch(`https://corona.lmao.ninja/v2/historical/${region}`)
+      const data = await response.json()
+      if (region === 'all'){
+        setHistoricalData({
+          cases: data.cases,
+          deaths: data.deaths,
+          recovered: data.recovered
+        })
+      }
+      else {
+        setHistoricalData({
+          cases: data.timeline.cases,
+          deaths: data.timeline.deaths,
+          recovered: data.timeline.recovered
+        })
+      }
+    }
+    
+    fetchHistoricalData()
+    console.log('Fetching Historical Data')
+  }, [region])
+
+  const [chartData, setChartData] = React.useState([])
+  React.useEffect(() => {
+    let compiledData = []
+    if (_.isEmpty(historicalData)){
+      console.log('No historical data present')
+    } else {
+      for(let [date, num] of Object.entries(historicalData[`${legend}`])) {
+        compiledData.push({
+          x: date,
+          y: num
+        })
+      }
+      setChartData([{
+        id: `${region === 'all' ? 'World' : region}`,
+        data: compiledData
+      }])
+      console.log('Compiling Chart Data')
+    }
+  }, [historicalData, legend, region])
+
   return (
     <Container maxWidth='lg' className={classes.container}>
       <Grid container spacing={3}>
         <Grid item xs={12}>
           <Paper className={classes.paper}>
-            <RegionSelector regions={regionList} value={region} handleRegionChange={handleRegionChange}/>
+            <RegionSelector regions={regionList} value={region} handleRegionChange={handleRegionChange} legend={legend} handleLegendChange={handleLegendChange}/>
           </Paper>
         </Grid>
         <Grid item xs={12} md={8} lg={9}>
           <Paper className={fixedHeightPaper}>
-            {/*<Chart country={country} legend='deaths'/>*/}
+            <Chart data={chartData} legend={legend}/>
           </Paper>
         </Grid>
         <Grid item xs={12} md={4} lg={3}>
