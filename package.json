@@ -10,7 +10,7 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "clsx": "^1.1.0",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "postcss-normalize": "^8.0.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
