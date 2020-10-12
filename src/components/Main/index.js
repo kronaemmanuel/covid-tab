@@ -45,7 +45,7 @@ export default function Main() {
   const [countryData, setCountryData] = React.useState([])
   React.useEffect(() => {
     const fetchCountryData = async () => {
-      const response = await fetch('https://corona.lmao.ninja/countries?sort=country')
+      const response = await fetch('https://disease.sh/v3/covid-19/countries')
       const data = await response.json()
       let list = []
       data.forEach(item => {
