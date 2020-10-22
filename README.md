@@ -5,7 +5,7 @@ I hope to publish this as both a Chrome and a Firefox extension, let's see how t
 ## HELP NEEDED
 
 There are a lot of layout and functionality issues with this. Please open Issues where you see them
-and submit PRs if you can. 
+and submit PRs if you can.
 
 ## Build
 
@@ -19,5 +19,5 @@ yarn build
 
 ## Sources
 
-- Data: NovelCOVID API
+- Data: disease.sh API
 - Vector: Freepik
